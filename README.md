@@ -21,16 +21,36 @@ TODO: describe it better
     npm install ./
 
 
-## Folder structure
+## Application file/folder structure
+
+* app
+ * assets - compressed css and JavaScript files
+ * css
+ * images
+ * js
+  * collections - backbone collections
+  * config - app config, namespace, environments
+  * helpers - app helpers
+  * models - backbone models
+  * routes - backbone routes
+  * templates/templates.js - compiled templates from `templates` folder
+  * vendor - vendor dependecies
+  * views - backbone views
+  * app.js - starting point for the app
+  * files.js - array of paths to app source files
+  * init.js - loads dependecies and initializes JQM, PhoneGap
+ * templates - project html templates
+ * views - jQuery Mobile pages
+ * index.html
 
 
 ##Watch for changes in templates, views and styles:
 
     grunt watch
 
-Templates will be compiled into one JavaScript file called templates.js.
-Views will be minified and append to body element in index.html
-CSS files will be minified and compilds into one file called assets/app.css
+Templates will be compiled into one JavaScript file called `templates.js`.
+Views will be minified and appended to body element in `index.html`.
+CSS files will be minified and compilds into one file called `assets/app.css`.
 
 
 ##Run specs:
