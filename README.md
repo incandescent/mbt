@@ -24,7 +24,7 @@ TODO: describe it better
 ## Application file/folder structure
 
 * app
- * assets - compressed css and JavaScript files
+  * assets - compressed css and JavaScript files
  * css
  * images
  * js
