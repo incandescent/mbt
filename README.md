@@ -23,25 +23,24 @@ TODO: describe it better
 
 ## Application file/folder structure
 
-* app
-  * assets - compressed css and JavaScript files
- * css
- * images
- * js
-  * collections - backbone collections
-  * config - app config, namespace, environments
-  * helpers - app helpers
-  * models - backbone models
-  * routes - backbone routes
-  * templates/templates.js - compiled templates from `templates` folder
-  * vendor - vendor dependecies
-  * views - backbone views
-  * app.js - starting point for the app
-  * files.js - array of paths to app source files
-  * init.js - loads dependecies and initializes JQM, PhoneGap
- * templates - project html templates
- * views - jQuery Mobile pages
- * index.html
+* assets - compressed css and JavaScript files
+* css
+* images
+* js
+ * collections - backbone collections
+ * config - app config, namespace, environments
+ * helpers - app helpers
+ * models - backbone models
+ * routes - backbone routes
+ * templates/templates.js - compiled templates from `templates` folder
+ * vendor - vendor dependecies
+ * views - backbone views
+ * app.js - starting point for the app
+ * files.js - array of paths to app source files
+ * init.js - loads dependecies and initializes JQM, PhoneGap
+* templates - project html templates
+* views - jQuery Mobile pages
+* index.html
 
 
 ##Watch for changes in templates, views and styles:
@@ -70,3 +69,28 @@ Release task lints, minifies and packages all JavaScript files listed in `files.
 It also appends `cordova.js` (the PhoneGap source file) to head element of `index.html` and copies all files 
 ready for PhoneGap into `iphone` and `android` folders.
 
+##License:
+<pre>
+(The MIT License)
+
+Copyright (c) 2012 Incandescent Software
+
+Permission is hereby granted, free of charge, to any person obtaining
+a copy of this software and associated documentation files (the
+'Software'), to deal in the Software without restriction, including
+without limitation the rights to use, copy, modify, merge, publish,
+distribute, sublicense, and/or sell copies of the Software, and to
+permit persons to whom the Software is furnished to do so, subject to
+the following conditions:
+
+The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+</pre>
