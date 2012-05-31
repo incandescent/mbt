@@ -1,8 +1,8 @@
 {
-  "name": "pgb",
-  "description": "PhoneGap Boilerplate",
+  "name": "mbt",
+  "description": "Mobile Build Tool",
   "version": "0.0.1",
-  "homepage": "https://github.com/incandescent/pgb",
+  "homepage": "https://github.com/incandescent/mbt",
   "author": {
     "name": "Michal Kuklis (@mkuklis)",
     "email": "michal@incsw.com",
@@ -10,10 +10,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/incandescent/pgb.git"
+    "url": "git://github.com/incandescent/mbt.git"
   },
   "bugs": {
-    "url": "https://github.com/incandescent/pgb/issues"
+    "url": "https://github.com/incandescent/mbt/issues"
   },
   "dependencies": {
     "grunt": "0.3.9",
@@ -27,8 +27,7 @@
     "node": "~0.6"
   },
   "main": "grunt.js",
-  "bin": "bin/pgb",
+  "bin": "bin/mbt",
   "scripts": {
-    "test": "grunt test"
   }
 }

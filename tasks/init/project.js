@@ -1,7 +1,7 @@
 var fs = require('fs');
 
-exports.description = "PhoneGap Boilerplate";
-exports.notes = "This tool will help you install, configure, build, and maintain your PhoneGap Boilerplate project.";
+exports.description = "Mobile Build Tool";
+exports.notes = "This tool will help you install, configure, build, and maintain your mobile project.";
 
 exports.warnOn = '*';
 

@@ -1,6 +1,4 @@
-pgb
+mbt
 ===
 
-PhoneGap Boilerplate
-
-
+Mobile Build Tool
