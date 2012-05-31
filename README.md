@@ -49,7 +49,9 @@ TODO: describe it better
     grunt watch
 
 Templates will be compiled into one JavaScript file called `templates.js`.
+
 Views will be minified and appended to body element in `index.html`.
+
 CSS files will be minified and compilds into one file called `assets/app.css`.
 
 
