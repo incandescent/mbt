@@ -38,8 +38,8 @@ TODO: describe it better
  * app.js - starting point for the app
  * files.js - array of paths to app source files
  * init.js - loads dependecies and initializes JQM, PhoneGap
-* templates - project html templates
-* views - jQuery Mobile pages
+* templates - project templates compiled into `js/templates/templates.js`
+* views - jQuery Mobile pages appended into body element in `index.html`
 * index.html
 
 
