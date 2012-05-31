@@ -1,0 +1,4 @@
+pgb
+===
+
+PhoneGap Boilerplate
