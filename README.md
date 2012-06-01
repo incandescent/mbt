@@ -4,7 +4,7 @@ mbt
 # Mobile Build Tool
 
 The tool is a set of libraries and tasks to help you install, configure, build, and maintain your mobile project based on Backbone.js and jQuery Mobile.
-The project is based on wonderful library called [grunt](https://github.com/cowboy/grunt).
+This project is based on wonderful library called [Grunt](https://github.com/cowboy/grunt).
 
 TODO: describe it better
 
