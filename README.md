@@ -38,7 +38,7 @@ TODO: describe it better
  * files.js - array of paths to app source files
  * init.js - loads dependecies and initializes JQM, PhoneGap
  * templates.js - compiled templates from `templates` folder
-* templates - project templates compiled into `js/templates/templates.js`
+* templates - project templates compiled into `js/templates.js`
 * views - jQuery Mobile pages appended into body element in `index.html`
 * index.html
 
@@ -51,7 +51,7 @@ Templates will be compiled into one JavaScript file called `templates.js`.
 
 Views will be minified and appended to body element in `index.html`.
 
-CSS files will be minified and compilds into one file called `assets/app.css`.
+CSS files will be minified and compiled into one file called `assets/app.css`.
 
 
 ##Run specs:
