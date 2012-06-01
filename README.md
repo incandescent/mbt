@@ -32,12 +32,12 @@ TODO: describe it better
  * helpers - app helpers
  * models - backbone models
  * routes - backbone routes
- * templates/templates.js - compiled templates from `templates` folder
  * vendor - vendor dependecies
  * views - backbone views
  * app.js - starting point for the app
  * files.js - array of paths to app source files
  * init.js - loads dependecies and initializes JQM, PhoneGap
+ * templates.js - compiled templates from `templates` folder
 * templates - project templates compiled into `js/templates/templates.js`
 * views - jQuery Mobile pages appended into body element in `index.html`
 * index.html
@@ -66,8 +66,8 @@ CSS files will be minified and compilds into one file called `assets/app.css`.
 Release task lints, minifies and packages all JavaScript files listed in `files.js` file into one file:
 `assets/app.js`.
 
-It ppends `cordova.js` (the PhoneGap source file) to files list before minifaction. 
-In addition to source minification it copies `app.css` and `app.js` from `assets` into `iphone` and `android` folders.
+It prepends `cordova.js` (the PhoneGap source file) to files list before minifaction. 
+After minifications `app.css`, `app.js` and images are copied into `iphone` and `android` and are ready for PhoneGap.
 
 ##License:
 <pre>
