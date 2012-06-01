@@ -67,7 +67,7 @@ Release task lints, minifies and packages all JavaScript files listed in `files.
 `assets/app.js`.
 
 It prepends `cordova.js` (the PhoneGap source file) to files list before minifaction. 
-After minifications `app.css`, `app.js` and images are copied into `iphone` and `android` and are ready for PhoneGap.
+After minifications `app.css`, `app.js` and images are copied into `phonegap/iphone/www/` and `phonegap/android/assets/www` folders and are ready for PhoneGap.
 
 ##License:
 <pre>
