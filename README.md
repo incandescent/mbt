@@ -61,13 +61,13 @@ CSS files will be minified and compilds into one file called `assets/app.css`.
 
 ##Release for PhoneGap
 
-    grunt release phonegap
+    grunt release
 
-Release task lints, minifies and packages all JavaScript files listed in `files.js` file into one file called 
+Release task lints, minifies and packages all JavaScript files listed in `files.js` file into one file:
 `assets/app.js`.
 
-It also appends `cordova.js` (the PhoneGap source file) to head element of `index.html` and copies all files 
-ready for PhoneGap into `iphone` and `android` folders.
+It ppends `cordova.js` (the PhoneGap source file) to files list before minifaction. 
+In addition to source minification it copies `app.css` and `app.js` from `assets` into `iphone` and `android` folders.
 
 ##License:
 <pre>

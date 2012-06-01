@@ -1,18 +1,16 @@
-"use strict";
+/*global module:false, exports:false */
 
-// {%= name %} namespace
-if (typeof {%= js_safe_name %} === "undefined") {
-  var {%= js_safe_name %} = this.{%= js_safe_name %} = {};
+// test namespace
+if (typeof test === "undefined") {
+  var test = this.test = {};
 
-  if (typeof exports !== 'undefined') {
-    if (typeof module !== 'undefined' && module.exports) {
-      exports = module.exports = {%= js_safe_name %};
-    }
+  if (typeof module !== 'undefined' && module.exports) {
+    module.exports = test;
   }
 }
 
 // config shared by all environments
-{%= js_safe_name %}.config = {
+test.config = {
   version: "0.0.1",
-  env: "dev", // available envs: dev, test, prod
+  env: "dev" // available envs: dev, test, prod
 };
