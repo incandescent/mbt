@@ -4,7 +4,7 @@ mbt
 # Mobile Build Tool
 
 The tool is a set of libraries and tasks to help you install, configure, build, and maintain your mobile project based on Backbone.js and jQuery Mobile.
-The project is based on wonderful library called Grunt.
+The project is based on wonderful library called  [github.com/mkuklis/asEvented](github.com/mkuklis/asEvented).
 
 TODO: describe it better
 
@@ -21,7 +21,7 @@ TODO: describe it better
     npm install ./
 
 
-## Application file/folder structure
+## Generated project's folder structure
 
 * assets - compressed css and JavaScript files
 * css
