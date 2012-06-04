@@ -32,7 +32,7 @@ module.exports = function (grunt) {
     },
 
     jshint: {
-     options: {
+      options: {
         asi: true,
         browser: true,
         curly: false,
