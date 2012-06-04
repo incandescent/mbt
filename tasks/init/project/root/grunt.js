@@ -16,7 +16,7 @@ module.exports = function (grunt) {
     },
 
     css: {
-      files: ["app/css/*.css"]
+      files: ["app/css/*.css", "app/css/jquery.mobile/*.css"]
     },
 
     views: {

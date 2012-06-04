@@ -1,5 +1,7 @@
 // {%= name %} dependecies
 var files = [
+  // vendor
+  "js/vendor/jquery.mobile.router.min.js",
   "js/vendor/jquery.mobile-1.1.0.min.js",
   "js/vendor/underscore-min.js",
   "js/vendor/backbone.js",
@@ -7,6 +9,13 @@ var files = [
 
   // add your app dependecies here
 
+  // models
+
+  // collections
+
+  // views
+
+  "js/router.js",
   "js/app.js"
 ];
 

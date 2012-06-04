@@ -18,10 +18,10 @@ grunt.helper('prompt', {type: 'project'}, [
     fs.mkdirSync('app/js/models');
     fs.mkdirSync('app/js/collections');
     fs.mkdirSync('app/js/views');
-    fs.mkdirSync('app/js/routes');
 
     fs.mkdirSync('app/templates');
     fs.mkdirSync('app/views');
+    fs.mkdirSync('app/images');
 
     done();
   });

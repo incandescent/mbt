@@ -1,4 +1,4 @@
-(function (test, JST) {
+(function ({%= js_safe_name %}, JST) {
 
   "use strict";
 
@@ -8,8 +8,8 @@
    * @param name - template name
    * @param data - data to render
    */
-  test.render = function (name, data) {
+  {%= js_safe_name %}.render = function (name, data) {
     return JST['app/templates/' + name + '.html.tmpl'](data);
   }
 
-})(test, JST);
+})({%= js_safe_name %}, JST);
