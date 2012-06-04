@@ -32,16 +32,23 @@ module.exports = function (grunt) {
     },
 
     jshint: {
-      options: {
+     options: {
         asi: true,
-        curly: true,
+        browser: true,
+        curly: false,
         eqeqeq: false,
         expr: true,
         forin: false,
         newcap: true,
         laxcomma: true,
-        strict: false,
-        funcscope: true
+        strict: false
+      },
+      globals: {
+        "_": true,
+        "$": true,
+        "$script": true,
+        "Backbone": true,
+        "jQuery": true
       }
     },
 
