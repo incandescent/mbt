@@ -36,7 +36,7 @@ TODO: describe it better
  * app.js - starting point for the app
  * files.js - array of paths to app source files
  * init.js - loads dependecies and initializes JQM, PhoneGap
- * router.js - jQM router
+ * router.js - [jQM router](https://github.com/azicchetti/jquerymobile-router)
  * templates.js - compiled templates from `templates` folder
 * templates - project templates compiled into `js/templates.js`
 * views - jQuery Mobile pages appended into body element in `index.html`
