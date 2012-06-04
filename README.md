@@ -31,12 +31,12 @@ TODO: describe it better
  * config - app config, namespace, environments
  * helpers - app helpers
  * models - backbone models
- * routes - backbone routes
  * vendor - vendor dependecies
  * views - backbone views
  * app.js - starting point for the app
  * files.js - array of paths to app source files
  * init.js - loads dependecies and initializes JQM, PhoneGap
+ * router.js - jQM router
  * templates.js - compiled templates from `templates` folder
 * templates - project templates compiled into `js/templates.js`
 * views - jQuery Mobile pages appended into body element in `index.html`
