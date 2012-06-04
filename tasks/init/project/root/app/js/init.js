@@ -10,7 +10,7 @@ $script.ready("jquery", function () {
   // JQM, PhoneGap and all dependencies ready
   $.when(jqmReady, pgReady, filesReady).then(function () {
     // initialize APP
-    test.init();
+    {%= js_safe_name %}.init();
   });
 
   function resolve() {
@@ -28,13 +28,13 @@ $script.ready("jquery", function () {
   $(document).on("mobileinit", jqmReady.resolve);
 
   // in prod load minified version app.js
-  if (test.config.env == "prod") {
+  if ({%= js_safe_name %}.config.env == "prod") {
     $script("assets/app.js", resolve);
   }
   else {
     // in other envs load all files
     $script("js/files.js", function () {
-      files.push("js/config/envs/" + test.config.env + ".js");
+      files.push("js/config/envs/" + {%= js_safe_name %}.config.env + ".js");
       $script.order(files, resolve);
     });
   }
