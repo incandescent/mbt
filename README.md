@@ -16,7 +16,7 @@ MBT currently includes:
 
 The tool is [opinionated](http://tomdale.net/2012/01/amd-is-not-the-answer/). 
 AMD is popular these days but we decided to keep it 'simple' and use [$script.js](http://dustindiaz.com/scriptjs) for 
-loading resources in development. During relase everything is minified and bundled into one file ready for production.
+loading resources in development. During release everything is minified and bundled into one file ready for production.
 
 ##Install:
 
@@ -78,6 +78,12 @@ Release task lints, minifies and packages all JavaScript files listed in `files.
 
 It prepends `cordova.js` (the PhoneGap source file) to files list before minifaction. 
 After minifications `app.css`, `app.js` and images are copied into `phonegap/iphone/www/` and `phonegap/android/assets/www` folders and are ready for PhoneGap.
+
+## TODO
+
+* command line generator for models, collections, views
+* better release task to allow for releasing into different envs (dev, test, prod)
+* add support for different templating systems
 
 ##License:
 <pre>
