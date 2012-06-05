@@ -1,4 +1,4 @@
-// grunttest namespace
+// {%= name %}  namespace
 if (typeof {%= js_safe_name %} === "undefined") {
   var {%= js_safe_name %} = this.{%= js_safe_name %} = {};
 }
@@ -11,6 +11,10 @@ if (typeof {%= js_safe_name %} === "undefined") {
   "js/vendor/underscore-min.js",
   "js/vendor/backbone.js",
   "js/templates.js",
+
+  // config
+  "js/config/config.js",
+  "js/config/envs/dev.js",
 
   // add your app dependecies here
 
@@ -32,7 +36,7 @@ if (typeof {%= js_safe_name %} === "undefined") {
 ];
 
 // load all
-if ($script) {
+if (typeof $script != "undefined") {
   $script.order({%= js_safe_name %}.files);
 }
 
