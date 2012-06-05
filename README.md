@@ -8,7 +8,7 @@ This project is based on wonderful library called [Grunt](https://github.com/cow
 
 MBT currently includes:
 
-* [Underscore.js v1.3.3](http://underscorejs.org/) we are also revieving [Lo-Dash](http://lodash.com/)
+* [Underscore.js v1.3.3](http://underscorejs.org/) we are also reviewing [Lo-Dash](http://lodash.com/)
 * [Backbone.js v0.9.2](http://backbonejs.org/) 
 * [jQuery v1.7.2](http://jquery.com/)
 * [jQuery Mobile v1.1.0](http://jquerymobile.com/)
