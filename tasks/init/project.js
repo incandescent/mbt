@@ -21,7 +21,6 @@ grunt.helper('prompt', {type: 'project'}, [
 
     fs.mkdirSync('app/templates');
     fs.mkdirSync('app/views');
-    fs.mkdirSync('app/images');
 
     done();
   });

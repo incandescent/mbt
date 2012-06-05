@@ -1,14 +1,20 @@
-"use strict";
+(function () {
 
-// setup router
-{%= js_safe_name %}.initRouter = function () {
+  "use strict";
 
-  var handlers = {
-    // define your route handlers here
-  };
+  // setup router
+  {%= js_safe_name %}.initRouter = function () {
 
-  this.router = new $.mobile.Router({
-    // define your routes here
-  }, handlers);
-}
+    var handlers = {
+      // define your route handlers here
+    };
 
+    var options = {
+      // router options
+    };
+
+    this.router = new $.mobile.Router({
+      // define your routes here
+    }, handlers, options);
+  }
+})();
