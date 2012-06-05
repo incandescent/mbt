@@ -2,17 +2,17 @@ module.exports = function (grunt) {
 
   // load js paths
   var jsFiles = require('./app/js/files.js').map(function (file) {
+    if (file == "js/config/envs/dev.js") {
+      file = "js/config/envs/prod.js";
+    }
     return "app/" + file;
   });
 
-  var prodFiles = jsFiles.concat([
-      'app/js/config/envs/prod.js',
-      'phonegap/iphone/www/cordova-1.7.0.js']);
+  jsFiles.unshift('phonegap/iphone/www/cordova-1.7.0.js');
 
   grunt.initConfig({
     js: {
       files: jsFiles,
-      prodFiles: prodFiles
     },
 
     css: {
@@ -62,7 +62,7 @@ module.exports = function (grunt) {
     },
 
     concat: {
-      'app/assets/app.js': '<config:js.prodFiles>',
+      'app/assets/app.js': '<config:js.files>',
     },
 
     jasmine: {
@@ -78,13 +78,14 @@ module.exports = function (grunt) {
         'app/js/routes/*.js',
         'app/js/modules/*.js',
         'app/files.js',
+        'app/router.js',
         'app/init.js',
         'app/app.js']
     },
 
     // tasks configs
     min: {
-      "app/assets/app.js": '<config:js.prodFiles>'
+      "app/assets/app.js": '<config:js.files>'
     },
 
     jst: {
