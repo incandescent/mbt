@@ -6,7 +6,17 @@ mbt
 The tool is a set of libraries and tasks to help you install, configure, build, and maintain your mobile project based on Backbone.js and jQuery Mobile.
 This project is based on wonderful library called [Grunt](https://github.com/cowboy/grunt).
 
-TODO: describe it better
+MBT currently includes:
+
+* [Underscore.js v1.3.3](http://underscorejs.org/) we are also revieving [Lo-Dash](http://lodash.com/)
+* [Backbone.js v0.9.2](http://backbonejs.org/) 
+* [jQuery v1.7.2](http://jquery.com/)
+* [jQuery Mobile v1.1.0](http://jquerymobile.com/)
+* [jquerymobile-router v0.9](https://github.com/azicchetti/jquerymobile-router)
+
+The tool is [opinionated](http://tomdale.net/2012/01/amd-is-not-the-answer/). 
+AMD is popular these days but we decided to keep it 'simple' and use [$script.js](http://dustindiaz.com/scriptjs) for 
+loading resources in development. During relase everything is minified and bundled into one file ready for production.
 
 ##Install:
 
