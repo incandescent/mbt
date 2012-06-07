@@ -17,6 +17,7 @@
   },
   "dependencies": {
     "grunt": "0.3.9",
+    "grunt-compass": "latest",
     "grunt-jasmine-task": "latest",
     "html-minifier": "latest",
     "clean-css": "0.3.2"
