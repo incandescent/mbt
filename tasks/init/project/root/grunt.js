@@ -22,6 +22,13 @@ module.exports = function (grunt) {
       }
     },
 
+    compass: {
+      dist: {
+        src: 'app/sass/',
+        dest: 'app/css/'
+      }
+    },
+
     css: {
       files: ["app/css/*.css", "app/css/jquery.mobile/*.css"]
     },
@@ -119,6 +126,10 @@ module.exports = function (grunt) {
         files: '<config:templates.files>',
         tasks: "jst"
       },
+      compass: {
+          files: ['app/sass/**/*.scss', 'app/sass/**/*.sass'],
+          tasks: 'compass'
+      },
       mincss: {
         files: '<config:css.files>',
         tasks: "mincss"
@@ -136,6 +147,7 @@ module.exports = function (grunt) {
 
   // Load local tasks
   grunt.loadTasks("tasks");
+  grunt.loadNpmTasks('grunt-compass');
   grunt.loadNpmTasks('grunt-jasmine-task');
   grunt.registerTask('default', 'watch');
 }
