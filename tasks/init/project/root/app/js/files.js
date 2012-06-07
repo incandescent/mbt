@@ -19,6 +19,7 @@ if (typeof {%= js_safe_name %} === "undefined") {
   // add your app dependecies here
 
   // helpers
+  "js/helpers/render.js",
 
   // models
 

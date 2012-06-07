@@ -12,7 +12,14 @@ module.exports = function (grunt) {
 
   grunt.initConfig({
     js: {
-      files: jsFiles,
+      files: jsFiles
+    },
+
+    coffee: {
+      dist: {
+        dir: 'app/coffee/',
+        dest: 'app/js/'
+      }
     },
 
     css: {
@@ -115,6 +122,10 @@ module.exports = function (grunt) {
       mincss: {
         files: '<config:css.files>',
         tasks: "mincss"
+      },
+      coffee: {
+        files: 'app/coffee/**/*.coffee',
+        tasks: 'coffee'
       }
     },
 
