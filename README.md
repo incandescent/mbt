@@ -97,9 +97,9 @@ After minifications `app.css`, `app.js` and images are copied into `phonegap/iph
 
 ##Contributors
 
-* @mkuklis (Michal Kuklis)
-* @ahamid (Aaron Hamid)
-* @parkr (Parker Moore)
+* [@mkuklis](https://github.com/mkuklis) (Michal Kuklis)
+* [@ahamid](https://github.com/ahamid) (Aaron Hamid)
+* [@parkr](https://github.com/parkr) (Parker Moore)
 
 ##License:
 <pre>
