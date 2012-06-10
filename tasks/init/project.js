@@ -7,21 +7,26 @@ exports.warnOn = '*';
 
 exports.template = function (grunt, init, done) {
 
-grunt.helper('prompt', {type: 'project'}, [
-  grunt.helper('prompt_for', 'name')
-  ], function(err, props) {
-    // Files to copy (and process).
-    var files = init.filesToCopy(props);
-    // Actually copy (and process) files.
-    init.copyAndProcess(files, props);
-
-    fs.mkdirSync('app/js/models');
-    fs.mkdirSync('app/js/collections');
-    fs.mkdirSync('app/js/views');
-
-    fs.mkdirSync('app/templates');
-    fs.mkdirSync('app/views');
-
+  if (this.flags.coffee) {
+    // run coffee project
+    grunt.task.run('init:project-coffee');
     done();
-  });
+  }
+  else {
+    grunt.helper('prompt', {type: 'project'}, [ grunt.helper('prompt_for', 'name') ], function (err, props) {
+      // Files to copy (and process).
+      var files = init.filesToCopy(props);
+      // Actually copy (and process) files.
+      init.copyAndProcess(files, props);
+
+      fs.mkdirSync('app/js/models');
+      fs.mkdirSync('app/js/collections');
+      fs.mkdirSync('app/js/views');
+
+      fs.mkdirSync('app/templates');
+      fs.mkdirSync('app/views');
+
+      done();
+    });
+  }
 };
