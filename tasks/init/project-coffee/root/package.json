@@ -1,0 +1,29 @@
+{
+  "name": "{%= js_safe_name %}",
+  "description": "",
+  "version": "0.0.1",
+  "homepage": "",
+  "author": {
+    "name": "",
+    "email": "",
+    "url": ""
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "bugs": {
+    "url": ""
+  },
+  "dependencies": {
+    "grunt": "0.3.9",
+    "grunt-jasmine-task": "latest",
+    "html-minifier": "latest",
+    "clean-css": "0.3.2"
+  },
+  "keywords": [],
+  "engines": {
+    "node": "~0.6"
+  },
+  "main": "grunt.js"
+}
