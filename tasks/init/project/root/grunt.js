@@ -15,13 +15,6 @@ module.exports = function (grunt) {
       files: jsFiles
     },
 
-    coffee: {
-      dist: {
-        dir: 'app/coffee/',
-        dest: 'app/js/'
-      }
-    },
-
     css: {
       files: ["app/css/*.css", "app/css/jquery.mobile/*.css"]
     },
@@ -122,10 +115,6 @@ module.exports = function (grunt) {
       mincss: {
         files: '<config:css.files>',
         tasks: "mincss"
-      },
-      coffee: {
-        files: 'app/coffee/**/*.coffee',
-        tasks: 'coffee'
       }
     },
 
