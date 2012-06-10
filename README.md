@@ -71,7 +71,7 @@ Views will be minified and appended to body element in `index.html`.
 
 CSS files will be minified and compiled into one file called `assets/app.css`.
 
-CoffeeScript files will be compiled into one corresponding files under `js` folder.
+CoffeeScript files will be compiled into corresponding files under `js` folder.
 
 
 ##Run specs:
