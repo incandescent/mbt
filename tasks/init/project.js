@@ -13,7 +13,21 @@ exports.template = function (grunt, init, done) {
     done();
   }
   else {
-    grunt.helper('prompt', {type: 'project'}, [ grunt.helper('prompt_for', 'name') ], function (err, props) {
+    grunt.helper('prompt', {type: 'project'}, [
+      {
+        name: 'name',
+        message: 'Type project namespace (choose something short, no spaces):',
+        default: '',
+        sanitize: function(value, data, done) {
+          data.js_safe_name = value.replace(/[\W_]+/g, '_').replace(/^(\d)/, '_$1');
+          done();
+        }
+      }
+    ], function (err, props) {
+
+      //props.name = props.namespace
+      console.log(props);
+
       // Files to copy (and process).
       var files = init.filesToCopy(props);
       // Actually copy (and process) files.

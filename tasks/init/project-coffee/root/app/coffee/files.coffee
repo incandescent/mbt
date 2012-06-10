@@ -1,23 +1,20 @@
-# {%= name %}  namespace
-{%= js_safe_name %} = @{%= js_safe_name %} = {} unless {%= js_safe_name %}?
-
 # {%= name %} dependecies
-{%= js_safe_name %}.files = [
+files = [
   # vendor
-  "js/vendor/jquery.min.js",
-  "js/vendor/jquery.mobile.router.min.js",
-  "js/vendor/underscore-min.js",
-  "js/vendor/backbone.js",
-  "js/templates.js",
+  "js/vendor/jquery.min"
+  "js/vendor/jquery.mobile.router.min"
+  "js/vendor/underscore-min"
+  "js/vendor/backbone"
+  "js/templates"
 
   # config
-  "js/config/config.js",
-  "js/config/envs/dev.js",
+  "js/config/config"
+  "js/config/envs/dev"
 
   # add your app dependecies here
 
   # helpers
-  "js/helpers/render.js",
+  "js/helpers/render"
 
   # models
 
@@ -26,14 +23,16 @@
   # views
 
   # app
-  "js/router.js",
-  "js/app.js",
-  "js/init.js",
+  "js/router"
+  "js/app"
+  "js/init"
 
   # load jquery mobile last
-  "js/vendor/jquery.mobile-1.1.0.min.js"
-];
+  "js/vendor/jquery.mobile-1.1.0.min"
+]
+
+files = ("#{file}.js" for file in files)
 
 # load all
-$script.order({%= js_safe_name %}.files) if $script?
-module.exports = {%= js_safe_name %}.files if exports?
+$script.order(files) if $script?
+module.exports = files if exports?
