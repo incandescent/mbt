@@ -6,7 +6,7 @@ mbt
 The tool is a set of libraries and tasks to help you install, configure, build, and maintain your mobile project based on Backbone.js and jQuery Mobile.
 This project is based on wonderful library called [Grunt](https://github.com/cowboy/grunt).
 
-MBT currently includes:
+By default MBT currently includes:
 
 * [Underscore.js v1.3.3](http://underscorejs.org/) we are also reviewing [Lo-Dash](http://lodash.com/)
 * [Backbone.js v0.9.2](http://backbonejs.org/) 
@@ -23,13 +23,21 @@ loading resources in development. During release everything is minified and bund
     npm install -g mbt
 
 
-##Generate new project:
+##Generate new js project:
 
     mkdir PROJECT_FOLDER
     cd PROJECT_FOLDER
     mbt init:project
     npm install ./
 
+##Generate new coffee project
+
+For people who prefer CoffeeScript
+
+    mkdir PROJECT_FOLDER
+    cd PROJECT_FOLDER
+    mbt init:project:coffee
+    npm install ./
 
 ## Generated project's folder structure
 
@@ -48,6 +56,7 @@ loading resources in development. During release everything is minified and bund
  * init.js - loads dependecies and initializes JQM, PhoneGap
  * router.js - [jQM router](https://github.com/azicchetti/jquerymobile-router)
  * templates.js - compiled templates from `templates` folder
+* coffee - similar structure to js folder if coffee is your cup of tea...
 * templates - project templates compiled into `js/templates.js`
 * views - jQuery Mobile pages appended into body element in `index.html`
 * index.html
@@ -84,6 +93,14 @@ After minifications `app.css`, `app.js` and images are copied into `phonegap/iph
 * command line generator for models, collections, views
 * better release task to allow for releasing into different envs (dev, test, prod)
 * add support for different templating systems
+
+## Contributors
+
+##Contributors
+
+* @mkuklis (Michal Kuklis)
+* @ahamid (Aaron Hamid)
+* @parkr (Parker Moore)
 
 ##License:
 <pre>
