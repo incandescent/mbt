@@ -1,6 +1,11 @@
+var fs = require('fs');
+var extend = require('node.extend');
+var path = require('path');
+
 module.exports = function (grunt) {
 
   // load js paths
+  var cfgPath = "tasks/cfg";
   var jsFiles = require('./app/js/files.js').map(function (file) {
     if (file == "js/config/envs/dev.js") {
       file = "js/config/envs/prod.js";
@@ -10,7 +15,7 @@ module.exports = function (grunt) {
 
   jsFiles.unshift('phonegap/iphone/www/cordova-1.7.0.js');
 
-  grunt.initConfig({
+  var cfg = {
     js: {
       files: jsFiles
     },
@@ -121,7 +126,16 @@ module.exports = function (grunt) {
     release: {
       "app/assets/app.js": '<config:js.files>'
     }
-  });
+  };
+ 
+  // deep-merge user configs
+  if (path.existsSync(cfgPath)) {
+    grunt.utils._.each(fs.readdirSync(cfgPath), function(cfg_file) {
+      extend(true, cfg, JSON.parse(fs.readFileSync(cfgpath + cfg_file))); 
+    });
+  }
+
+  grunt.initConfig(cfg);
 
   // Load local tasks
   grunt.loadTasks("tasks");
