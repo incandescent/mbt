@@ -19,7 +19,8 @@
     "grunt": "0.3.9",
     "grunt-jasmine-task": "latest",
     "html-minifier": "latest",
-    "clean-css": "0.3.2"
+    "clean-css": "0.3.2",
+    "node.extend": "latest"
   },
   "keywords": [],
   "engines": {
