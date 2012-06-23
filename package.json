@@ -1,7 +1,7 @@
 {
   "name": "mbt",
   "description": "Mobile Build Tool",
-  "version": "0.0.1",
+  "version": "0.1.1",
   "homepage": "https://github.com/incandescent/mbt",
   "author": {
     "name": "Michal Kuklis (@mkuklis)",
