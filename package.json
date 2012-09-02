@@ -16,15 +16,12 @@
     "url": "https://github.com/incandescent/mbt/issues"
   },
   "dependencies": {
-    "grunt": "0.3.9",
+    "grunt": "0.3.14",
     "clean-css": "0.3.2"
-  },
-  "devDependencies": {
-    "grunt": "~0.3.0"
   },
   "keywords": [],
   "engines": {
-    "node": "~0.6"
+    "node": ">=0.6"
   },
   "main": "grunt.js",
   "bin": "bin/mbt",
