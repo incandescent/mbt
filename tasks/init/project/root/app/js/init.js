@@ -1,4 +1,5 @@
 (function () {
+  "use strict";
 
   var jqmReady = $.Deferred(),
       pgReady = $.Deferred();
@@ -8,8 +9,8 @@
     // everything is ready here
   });
 
-    // resolve phonegap
-  if ("undefined" != typeof PhoneGap) {
+  // resolve phonegap
+  if ("undefined" !== typeof PhoneGap) {
     document.addEventListener("deviceready", pgReady.resolve, false);
   }
   else {

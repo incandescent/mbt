@@ -9,7 +9,7 @@ $.when(jqmReady, pgReady).then () ->
 if PhoneGap?
   document.addEventListener("deviceready", pgReady.resolve, false)
 else
-  pgReady.resolve();
+  pgReady.resolve()
 
 # jqm ready
 $(document).on "mobileinit", () ->
