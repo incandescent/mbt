@@ -10,10 +10,9 @@
   });
 
   // resolve phonegap
-  if ("undefined" !== typeof PhoneGap) {
+  if (typeof PhoneGap !== "undefined" && PhoneGap !== null) {
     document.addEventListener("deviceready", pgReady.resolve, false);
-  }
-  else {
+  } else {
     pgReady.resolve();
   }
 

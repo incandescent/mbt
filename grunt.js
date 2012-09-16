@@ -64,7 +64,8 @@ module.exports = function(grunt) {
         document: true,
         JST: true,
         $: true,
-        $script: true
+        $script: true,
+        PhoneGap: true
       }
     },
     coffeelint: {
@@ -82,7 +83,7 @@ module.exports = function(grunt) {
     },
     exec: {
       diffjs: {
-        command: 'diff -yBb tmp/generated tmp/js',
+        command: 'diff -ydBb tmp/generated tmp/js',
         stdout: true
       }
     }
