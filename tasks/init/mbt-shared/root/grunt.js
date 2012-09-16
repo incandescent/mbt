@@ -28,7 +28,7 @@ module.exports = function (grunt) {
     },
 
     css: {
-      files: ["app/css/*.css", "app/css/jquery.mobile/*.css"]
+      files: ["app/css/**/*.css" ]
     },
 
     views: {
@@ -40,7 +40,7 @@ module.exports = function (grunt) {
     },
 
     lint: {
-      files: ['app/js/*.js']
+      files: '<config:js.files>'
     },
 
     jshint: {
@@ -78,21 +78,13 @@ module.exports = function (grunt) {
     },
 
     jasmine: {
-      index: ['spec/javascripts/index.html']
+      src: '<config:js.files>',
+      specs : [ '**/*_spec.js' ],
+      helpers : 'spec/unit/helpers/**/*.js'
     },
 
-    lint: {
-      files: [
-        'app/js/config/*.js',
-        'app/js/helpers/*.js',
-        'app/js/models/*.js',
-        'app/js/views/*.js',
-        'app/js/routes/*.js',
-        'app/js/modules/*.js',
-        'app/files.js',
-        'app/router.js',
-        'app/init.js',
-        'app/app.js']
+    jasmine_node: {
+      project_root: "spec/integration",
     },
 
     // tasks configs
