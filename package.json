@@ -17,13 +17,18 @@
   },
   "dependencies": {
     "grunt": "0.3.14",
-    "clean-css": "0.3.2"
+    "clean-css": "0.3.2",
+    "node.extend": "latest"
   },
   "keywords": [],
   "engines": {
     "node": ">=0.6"
   },
-  "main": "grunt.js",
+  "files": [
+    "index.js",
+    "bin",
+    "tasks"
+  ],
   "bin": "bin/mbt",
   "scripts": {
   }

@@ -2,7 +2,9 @@ module.exports = function(grunt) {
 
   grunt.initConfig({
     lint: {
-      files: ["grunt.js"]
+      files: [
+        "tasks/init/*.js",
+      ]
     },
     watch: {
       files: "<config:lint.files>",
@@ -28,7 +30,7 @@ module.exports = function(grunt) {
   });
 
   // Load local tasks.
-  grunt.loadTasks("tasks");
+  //grunt.loadTasks("local-tasks");
 
   // Default task.
   grunt.registerTask("default", "lint");
