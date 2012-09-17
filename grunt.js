@@ -90,6 +90,14 @@ module.exports = function(grunt) {
       diffjs: {
         command: 'diff -ydBb tmp/generated tmp/js',
         stdout: true
+      },
+      js_proj_jasmine: {
+        command: 'cd tmp/test_project_js && npm install && grunt jasmine-server',
+        stdout: true
+      },
+      cs_proj_jasmine: {
+        command: 'cd tmp/test_project_cs && npm install && grunt jasmine-server',
+        stdout: true
       }
     }
   });
@@ -116,6 +124,9 @@ module.exports = function(grunt) {
   grunt.registerTask("diffjs", "exec:diffjs");
   grunt.registerTask("gen_js_proj", "clean:js_proj generate_js_proj");
   grunt.registerTask("gen_cs_proj", "clean:cs_proj generate_cs_proj");
+  grunt.registerTask("test_js_proj", "gen_js_proj exec:js_proj_jasmine");
+  grunt.registerTask("test_cs_proj", "gen_cs_proj exec:cs_proj_jasmine");
+
   grunt.registerTask("default", "clean:tmp replace:coffee replace:js coffeelint coffee lint replace:unreplace");
 
 

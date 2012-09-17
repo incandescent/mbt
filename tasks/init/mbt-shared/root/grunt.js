@@ -144,6 +144,7 @@ module.exports = function (grunt) {
 
   // Load local tasks
   grunt.loadTasks("tasks");
-  grunt.loadNpmTasks('grunt-jasmine-task');
+  grunt.loadNpmTasks('grunt-jasmine-runner');
+  grunt.loadNpmTasks('grunt-jasmine-node');
   grunt.registerTask('default', 'watch');
 }
