@@ -21,9 +21,11 @@ module.exports = function(grunt) {
         prefix: "__"
       }
     },
-    clean: {
-      folder: "tmp"
-    },
+    /*clean: {
+      tmp: "tmp",
+      js_proj: "tmp/test_project_js",
+      cs_proj: "tmp/test_project_cs"
+    },*/
     coffee: {
       app: {
         src: ['tmp/coffee/**/*.coffee'],
@@ -74,11 +76,11 @@ module.exports = function(grunt) {
     watch: {
       coffee: {
         files: "<config:replace.coffee.src>",
-        tasks: "clean build:coffee"
+        tasks: "clean:tmp build:coffee"
       },
       js: {
         files: "<config:replace.js.src>",
-        tasks: "clean build:js"
+        tasks: "clean:tmp build:js"
       }
     },
     exec: {
@@ -97,11 +99,21 @@ module.exports = function(grunt) {
 
   grunt.loadTasks('tasks');
 
+  /* generate us some projects! */
+  grunt.registerTask('generate_js_proj', 'Generate an MBT JS project', function() {
+    grunt.tasks(["init:project"], { name: "test_project_js", dest: "tmp/test_project_js", force: true });
+  });
+  grunt.registerTask('generate_cs_proj', 'Generate an MBT JS project', function() {
+    grunt.tasks(["init:project-coffee"], { name: "test_project_cs", dest: "tmp/test_project_cs", force: true});
+  });
+
   // Default task.
   grunt.registerTask("build:coffee", "replace:coffee coffeelint coffee lint");
   grunt.registerTask("build:js", "replace:js lint");
   grunt.registerTask("diffjs", "exec:diffjs");
-  grunt.registerTask("default", "clean replace:coffee replace:js coffeelint coffee lint replace:unreplace");
+  grunt.registerTaks("gen_js_proj", "clean:js_proj generate_js_proj");
+  grunt.registerTaks("gen_cs_proj", "clean:cs_proj generate_cs_proj");
+  grunt.registerTask("default", "clean:tmp replace:coffee replace:js coffeelint coffee lint replace:unreplace");
 
 
 };
