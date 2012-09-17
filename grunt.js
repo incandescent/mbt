@@ -3,13 +3,13 @@ module.exports = function(grunt) {
   grunt.initConfig({
     replace: {
       coffee: {
-        src: ['tasks/init/project-coffee/root/app/coffee/**/*.coffee'],
+        src: ['tasks/init/project/root/app/coffee/**/*.coffee'],
         dest: 'tmp/coffee',
         variables: { " js_safe_name %}": '__tmp_app' },
         prefix: "{%="
       },
       js: {
-        src: ["tasks/mbt-shared/root/tasks/**/*.js", "tasks/init/project*/**/*.js" ],
+        src: ["tasks/project/root/tasks/**/*.js" ],
         dest: 'tmp/js',
         variables: { " js_safe_name %}": '__tmp_app' },
         prefix: "{%="
@@ -92,11 +92,11 @@ module.exports = function(grunt) {
         stdout: true
       },
       js_proj_jasmine: {
-        command: 'cd tmp/test_project_js && npm install && grunt jasmine-server',
+        command: 'cd tmp/test_project_js && npm install && grunt && grunt test',
         stdout: true
       },
       cs_proj_jasmine: {
-        command: 'cd tmp/test_project_cs && npm install && grunt jasmine-server',
+        command: 'cd tmp/test_project_cs && npm install && grunt && grunt test',
         stdout: true
       }
     }
@@ -115,7 +115,7 @@ module.exports = function(grunt) {
     grunt.tasks(["init:project"], { name: "test_project_js", dest: "tmp/test_project_js", force: true });
   });
   grunt.registerTask('generate_cs_proj', 'Generate an MBT JS project', function() {
-    grunt.tasks(["init:project-coffee"], { name: "test_project_cs", dest: "tmp/test_project_cs", force: true});
+    grunt.tasks(["init:project:coffee"], { name: "test_project_cs", dest: "tmp/test_project_cs", force: true});
   });
 
   // Default task.

@@ -4,14 +4,22 @@ var path = require('path');
 
 module.exports = function (grunt) {
 
+  function resolve_js_files() {
+    try {
+      return require('./app/js/files.js').map(function (file) {
+        if (file == "js/config/envs/dev.js") {
+          file = "js/config/envs/prod.js";
+        }
+        return "app/" + file;
+      });
+    } catch (e) {
+      return []
+    }
+  }
+
   // load js paths
   var cfgPath = "tasks/cfg";
-  var jsFiles = require('./app/js/files.js').map(function (file) {
-    if (file == "js/config/envs/dev.js") {
-      file = "js/config/envs/prod.js";
-    }
-    return "app/" + file;
-  });
+  var jsFiles = resolve_js_files();
 
   jsFiles.unshift('phonegap/iphone/www/cordova-1.7.0.js');
 
@@ -21,10 +29,18 @@ module.exports = function (grunt) {
     },
 
     coffee: {
-      dist: {
-        dir: 'app/coffee/',
-        dest: 'app/js/'
+      app: {
+        src: ['app/coffee/**/*.coffee'],
+        dest: 'app/js',
+        options: {
+          bare: true,
+          preserve_dirs: true,
+          base_path: 'app/coffee'
+        }
       }
+    },
+    coffeelint: {
+      app: "<config:coffee.app.src>"
     },
 
     css: {
@@ -144,7 +160,10 @@ module.exports = function (grunt) {
 
   // Load local tasks
   grunt.loadTasks("tasks");
+  grunt.loadNpmTasks('grunt-coffee');
+  grunt.loadNpmTasks('grunt-coffeelint');
   grunt.loadNpmTasks('grunt-jasmine-runner');
   grunt.loadNpmTasks('grunt-jasmine-node');
-  grunt.registerTask('default', 'watch');
+  grunt.registerTask('default', 'coffee');
+  grunt.registerTask('test', 'coffee jasmine-server')
 }
