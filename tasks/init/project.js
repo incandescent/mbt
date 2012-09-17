@@ -1,4 +1,5 @@
 var fs = require('fs'),
+    path = require('path'),
     LANGS = [ 'coffee' ],
     MBT_PREFIX = "project";
 
@@ -12,6 +13,7 @@ module.exports = {
       var _ = grunt.utils._,
           lang = _.first(_.intersection(LANGS, this.args)),
           name = grunt.option('name'),
+          dest = grunt.option('dest'),
           project_options = null;
 
       // we have been invoked with a language variant
@@ -42,12 +44,20 @@ module.exports = {
           prevDone && prevDone();
         };
 
+        // stash the prompts for use downstream in mbt-shared template
+        // note: ewww :/
         grunt.task._options.mbt_props = props;
 
         // run mbt-shared first
         grunt.task.run('init:mbt-shared');
 
         done();
+      }
+
+      // if there is a dest param, hack the init destpath
+      if (typeof dest !== "undefined" && dest !== null) {
+        // don't use process.cwd()...use dest
+        init.destpath = path.join.bind(path, dest);
       }
 
       // if name option is supplied to cli, just use it, otherwise prompt for name
