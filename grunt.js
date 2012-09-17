@@ -21,11 +21,14 @@ module.exports = function(grunt) {
         prefix: "__"
       }
     },
-    /*clean: {
+    // XXX: DANGER: multi task config values CANNOT be object literals
+    // doing so will nuke CWD: https://github.com/reputation/grunt-clean/commit/ca16fa815c20f5a19f6ea98a23d1159480bf1b33
+    // (fix not published yet)
+    clean: {
       tmp: "tmp",
       js_proj: "tmp/test_project_js",
       cs_proj: "tmp/test_project_cs"
-    },*/
+    },
     coffee: {
       app: {
         src: ['tmp/coffee/**/*.coffee'],
@@ -111,8 +114,8 @@ module.exports = function(grunt) {
   grunt.registerTask("build:coffee", "replace:coffee coffeelint coffee lint");
   grunt.registerTask("build:js", "replace:js lint");
   grunt.registerTask("diffjs", "exec:diffjs");
-  grunt.registerTaks("gen_js_proj", "clean:js_proj generate_js_proj");
-  grunt.registerTaks("gen_cs_proj", "clean:cs_proj generate_cs_proj");
+  grunt.registerTask("gen_js_proj", "clean:js_proj generate_js_proj");
+  grunt.registerTask("gen_cs_proj", "clean:cs_proj generate_cs_proj");
   grunt.registerTask("default", "clean:tmp replace:coffee replace:js coffeelint coffee lint replace:unreplace");
 
 

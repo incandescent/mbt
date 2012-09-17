@@ -20,6 +20,8 @@
     "grunt-replace": "latest",
     "grunt-clean": "latest",
     "grunt-exec": "latest",
+    "grunt-coffee": "latest",
+    "grunt-coffeelint": "latest",
     "clean-css": "0.3.2",
 
     "grunt-jasmine-task": "latest"
