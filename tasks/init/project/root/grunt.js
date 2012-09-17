@@ -164,6 +164,6 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-coffeelint');
   grunt.loadNpmTasks('grunt-jasmine-runner');
   grunt.loadNpmTasks('grunt-jasmine-node');
-  grunt.registerTask('default', 'coffee');
-  grunt.registerTask('test', 'coffee jasmine-server')
+  grunt.registerTask('default', 'coffeelint coffee jst mincss tmplmin');
+  grunt.registerTask('test', 'default jasmine-server')
 }
