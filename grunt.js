@@ -95,6 +95,8 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-coffeelint');
   grunt.loadNpmTasks('grunt-exec');
 
+  grunt.loadTasks('tasks');
+
   // Default task.
   grunt.registerTask("build:coffee", "replace:coffee coffeelint coffee lint");
   grunt.registerTask("build:js", "replace:js lint");
