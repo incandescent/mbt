@@ -1,5 +1,5 @@
 // {%= name %}  namespace
-if (typeof {%= js_safe_name %} === "undefined") {
+if (typeof {%= js_safe_name %} === "undefined" || {%= js_safe_name %} === null ) {
   var {%= js_safe_name %} = this.{%= js_safe_name %} = {};
 }
 

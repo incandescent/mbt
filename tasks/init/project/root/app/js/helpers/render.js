@@ -10,6 +10,6 @@
    */
   {%= js_safe_name %}.render = function (name, data) {
     return JST['app/templates/' + name + '.html.tmpl'](data);
-  }
+  };
 
 })({%= js_safe_name %}, JST);

@@ -4,14 +4,22 @@ var path = require('path');
 
 module.exports = function (grunt) {
 
+  function resolve_js_files() {
+    try {
+      return require('./app/js/files.js').map(function (file) {
+        if (file == "js/config/envs/dev.js") {
+          file = "js/config/envs/prod.js";
+        }
+        return "app/" + file;
+      });
+    } catch (e) {
+      return []
+    }
+  }
+
   // load js paths
   var cfgPath = "tasks/cfg";
-  var jsFiles = require('./app/js/files.js').map(function (file) {
-    if (file == "js/config/envs/dev.js") {
-      file = "js/config/envs/prod.js";
-    }
-    return "app/" + file;
-  });
+  var jsFiles = resolve_js_files();
 
   jsFiles.unshift('phonegap/iphone/www/cordova-1.7.0.js');
 
@@ -20,8 +28,23 @@ module.exports = function (grunt) {
       files: jsFiles
     },
 
+    coffee: {
+      app: {
+        src: ['app/coffee/**/*.coffee'],
+        dest: 'app/js',
+        options: {
+          bare: true,
+          preserve_dirs: true,
+          base_path: 'app/coffee'
+        }
+      }
+    },
+    coffeelint: {
+      app: "<config:coffee.app.src>"
+    },
+
     css: {
-      files: ["app/css/*.css", "app/css/jquery.mobile/*.css"]
+      files: ["app/css/**/*.css" ]
     },
 
     views: {
@@ -33,7 +56,7 @@ module.exports = function (grunt) {
     },
 
     lint: {
-      files: ['app/js/*.js']
+      files: '<config:js.files>'
     },
 
     jshint: {
@@ -71,21 +94,13 @@ module.exports = function (grunt) {
     },
 
     jasmine: {
-      index: ['spec/javascripts/index.html']
+      src: '<config:js.files>',
+      specs : [ '**/*_spec.js' ],
+      helpers : 'spec/unit/helpers/**/*.js'
     },
 
-    lint: {
-      files: [
-        'app/js/config/*.js',
-        'app/js/helpers/*.js',
-        'app/js/models/*.js',
-        'app/js/views/*.js',
-        'app/js/routes/*.js',
-        'app/js/modules/*.js',
-        'app/files.js',
-        'app/router.js',
-        'app/init.js',
-        'app/app.js']
+    jasmine_node: {
+      project_root: "spec/integration",
     },
 
     // tasks configs
@@ -120,6 +135,10 @@ module.exports = function (grunt) {
       mincss: {
         files: '<config:css.files>',
         tasks: "mincss"
+      },
+      coffee: {
+        files: 'app/coffee/**/*.coffee',
+        tasks: 'coffee'
       }
     },
 
@@ -141,6 +160,10 @@ module.exports = function (grunt) {
 
   // Load local tasks
   grunt.loadTasks("tasks");
-  grunt.loadNpmTasks('grunt-jasmine-task');
-  grunt.registerTask('default', 'watch');
+  grunt.loadNpmTasks('grunt-coffee');
+  grunt.loadNpmTasks('grunt-coffeelint');
+  grunt.loadNpmTasks('grunt-jasmine-runner');
+  grunt.loadNpmTasks('grunt-jasmine-node');
+  grunt.registerTask('default', 'coffeelint coffee jst mincss tmplmin');
+  grunt.registerTask('test', 'default jasmine-server')
 }

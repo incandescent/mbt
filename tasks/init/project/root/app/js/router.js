@@ -16,5 +16,5 @@
     this.router = new $.mobile.Router({
       // define your routes here
     }, handlers, options);
-  }
+  };
 })();
