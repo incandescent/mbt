@@ -1,4 +1,4 @@
-# {%= name %} dependecies
+# {%= js_safe_name %} {%= name %} dependecies
 files = [
   # vendor
   "js/vendor/jquery.min"

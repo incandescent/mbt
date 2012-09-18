@@ -3,44 +3,61 @@ if (typeof {%= js_safe_name %} === "undefined") {
   var {%= js_safe_name %} = this.{%= js_safe_name %} = {};
 }
 
-// {%= name %} dependecies
-{%= js_safe_name %}.files = [
-  // vendor
-  "js/vendor/jquery.min.js",
-  "js/vendor/jquery.mobile.router.min.js",
-  "js/vendor/underscore-min.js",
-  "js/vendor/backbone.js",
-  "js/templates.js",
+(function(app) {
 
-  // config
-  "js/config/config.js",
-  "js/config/envs/dev.js",
+  function getUrlParams () {
+    var vars = {};
+    window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+      vars[key] = value.split("#")[0];
+    });
+    return vars;
+  }
 
-  // add your app dependecies here
+  // {%= name %} dependecies
+  app.files = function files(env) {
+    if (!env) env = "dev";
 
-  // helpers
-  "js/helpers/render.js",
+    if (env == "prod") {
+      return "asset/app.js";
+    } else return [
+      // vendor
+      "js/vendor/jquery.min.js",
+      "js/vendor/jquery.mobile.router.min.js",
+      "js/vendor/underscore-min.js",
+      "js/vendor/backbone.js",
+      "js/templates.js",
 
-  // models
+      // config
+      "js/config/config.js",
+      "js/config/envs/" + env + ".js",
 
-  // collections
+      // add your app dependecies here
 
-  // views
+      // helpers
+      "js/helpers/render.js",
 
-  // app
-  "js/router.js",
-  "js/app.js",
-  "js/init.js",
+      // models
 
-  // load jquery mobile last
-  "js/vendor/jquery.mobile-1.1.0.min.js"
-];
+      // collections
 
-// load all
-if (typeof $script !== "undefined") {
-  $script.order({%= js_safe_name %}.files);
-}
+      // views
 
-if (typeof exports !== 'undefined') {
-  module.exports = {%= js_safe_name %}.files;
-}
+      // app
+      "js/router.js",
+      "js/app.js",
+      "js/init.js",
+
+      // load jquery mobile last
+      "js/vendor/jquery.mobile-1.1.0.js"
+    ];
+  };
+
+  // load all
+  if (typeof $script !== "undefined") {
+    $script.order(app.files(getUrlParams().env || "dev"));
+  }
+
+  if (typeof exports !== 'undefined') {
+    module.exports = app.files;
+  }
+})({%= js_safe_name %})

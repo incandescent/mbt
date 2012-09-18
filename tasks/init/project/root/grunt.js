@@ -4,12 +4,9 @@ var path = require('path');
 
 module.exports = function (grunt) {
 
-  function resolve_js_files() {
+  function all_js() {
     try {
-      return require('./app/js/files.js').map(function (file) {
-        if (file == "js/config/envs/dev.js") {
-          file = "js/config/envs/prod.js";
-        }
+      return require('./app/js/files.js')().map(function (file) {
         return "app/" + file;
       });
     } catch (e) {
@@ -17,11 +14,18 @@ module.exports = function (grunt) {
     }
   }
 
+  function app_js() {
+    return grunt.utils._.reject(all_js(), function(path) {
+      return path.lastIndexOf("app/js/vendor/", 0) === 0 ||
+             path.lastIndexOf("phonegap/", 0) === 0;
+    });
+  }
+
   // load js paths
   var cfgPath = "tasks/cfg";
-  var jsFiles = resolve_js_files();
+  var jsFiles = all_js();
 
-  jsFiles.unshift('phonegap/iphone/www/cordova-1.7.0.js');
+  //jsFiles.unshift('phonegap/iphone/www/cordova-1.7.0.js');
 
   var cfg = {
     js: {
@@ -56,7 +60,7 @@ module.exports = function (grunt) {
     },
 
     lint: {
-      files: '<config:js.files>'
+      files: app_js()
     },
 
     jshint: {
@@ -95,12 +99,12 @@ module.exports = function (grunt) {
 
     jasmine: {
       src: '<config:js.files>',
-      specs : [ '**/*_spec.js' ],
-      helpers : 'spec/unit/helpers/**/*.js'
+      specs : [ 'specs/unit/*_spec.js' ],
+      helpers : 'specs/unit/helpers/**/*.js'
     },
 
     jasmine_node: {
-      project_root: "spec/integration",
+      project_root: "specs/integration",
     },
 
     // tasks configs
@@ -164,6 +168,6 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-coffeelint');
   grunt.loadNpmTasks('grunt-jasmine-runner');
   grunt.loadNpmTasks('grunt-jasmine-node');
-  grunt.registerTask('default', 'coffeelint coffee jst mincss tmplmin');
+  grunt.registerTask('default', 'coffeelint coffee jst mincss tmplmin concat');
   grunt.registerTask('test', 'default jasmine-server')
 }

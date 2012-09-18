@@ -9,7 +9,7 @@ module.exports = function(grunt) {
         prefix: "{%="
       },
       js: {
-        src: ["tasks/project/root/tasks/**/*.js" ],
+        src: ["tasks/init/project/root/app/js/**/*.js" ],
         dest: 'tmp/js',
         variables: { " js_safe_name %}": '__tmp_app' },
         prefix: "{%="
@@ -121,7 +121,7 @@ module.exports = function(grunt) {
   // Default task.
   grunt.registerTask("build:coffee", "replace:coffee coffeelint coffee lint");
   grunt.registerTask("build:js", "replace:js lint");
-  grunt.registerTask("diffjs", "exec:diffjs");
+  grunt.registerTask("diffjs", "replace:js replace:coffee coffee exec:diffjs");
   grunt.registerTask("gen_js_proj", "clean:js_proj generate_js_proj");
   grunt.registerTask("gen_cs_proj", "clean:cs_proj generate_cs_proj");
   grunt.registerTask("test_js_proj", "gen_js_proj exec:js_proj_jasmine");
