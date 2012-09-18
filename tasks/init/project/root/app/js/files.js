@@ -37,10 +37,10 @@ if (typeof {%= js_safe_name %} === "undefined") {
 ];
 
 // load all
-if (typeof $script != "undefined") {
+if (typeof $script !== "undefined") {
   $script.order({%= js_safe_name %}.files);
 }
 
-if (typeof exports != 'undefined') {
+if (typeof exports !== 'undefined') {
   module.exports = {%= js_safe_name %}.files;
 }
