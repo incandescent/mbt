@@ -1,5 +1,5 @@
-# setup router
-{%= js_safe_name %}.initRouter = () ->
+### setup router ###
+{%=js_safe_name%}.initRouter = () ->
 
   handlers = {
     # define your route handlers here

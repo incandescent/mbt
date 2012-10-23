@@ -1,6 +1,6 @@
 ___mbt_app_name__ = @___mbt_app_name__ = {} unless ___mbt_app_name__?
 
-getUrlParams ->
+getUrlParams = ->
   vars = {}
   window.location.href.replace /[?&]+([^=&]+)=([^&]*)/gi, (m,key,value) ->
     vars[key] = (value.split("#")[0])

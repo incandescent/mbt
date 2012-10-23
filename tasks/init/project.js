@@ -21,7 +21,8 @@ var fs = require('fs'),
       'app/views/**',
       'app/index.html',
       'phonegap/**',
-      'specs/**',
+      'spec/lib/**',
+      'spec/vendors/**',
       'tasks/**'
     ];
 

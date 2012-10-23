@@ -3,22 +3,22 @@ module.exports = function(grunt) {
   grunt.initConfig({
     replace: {
       coffee: {
-        src: ['tasks/init/project/root/app/coffee/**/*.coffee'],
-        dest: 'tmp/coffee',
-        variables: { " js_safe_name %}": '__tmp_app' },
-        prefix: "{%="
+        files: {
+          'tasks/init/project/root/app/coffee/': 'src/coffee/**/**.coffee'
+        },
+        options: {
+          variables: { "mbt_app_name__": '{%=js_safe_name%}' },
+          prefix: "___"
+        }
       },
       js: {
-        src: ["tasks/init/project/root/app/js/**/*.js" ],
-        dest: 'tmp/js',
-        variables: { " js_safe_name %}": '__tmp_app' },
-        prefix: "{%="
-      },
-      unreplace: {
-        src: ["tmp/generated/*.js"],
-        dest: 'tmp/compare',
-        variables: { "tmp_app": '{% js_safe_name %}' },
-        prefix: "__"
+        files: {
+          'tasks/init/project/root/app/js/': 'tmp/generated/**/**.js'
+        },
+        options: {
+          variables: { "mbt_app_name__": '{%=js_safe_name%}' },
+          prefix: "___"
+        }
       }
     },
     // XXX: DANGER: multi task config values CANNOT be object literals
@@ -31,20 +31,17 @@ module.exports = function(grunt) {
     },
     coffee: {
       app: {
-        src: ['tmp/coffee/**/*.coffee'],
+        src: ['src/coffee/**/*.coffee'],
         dest: 'tmp/generated',
         options: {
           bare: true,
           preserve_dirs: true,
-          base_path: 'tmp/coffee'
+          base_path: 'src/coffee'
         }
       }
     },
     lint: {
-      files: [ 'tmp/js/**/*.js' ]
-             // coffeescript does not generate code w/ use strict statement
-             // so skip linting and assume it all goes to plan
-             // 'tmp/generated/**/*.js' ]
+      // src: [ 'tmp/generated/**/*.js' ]
     },
     jshint: {
       options: {
@@ -74,7 +71,7 @@ module.exports = function(grunt) {
       }
     },
     coffeelint: {
-      app: "<config:coffee.app.src>"
+      app: "<config:coffee.app.src>",
     },
     watch: {
       coffee: {
@@ -119,15 +116,11 @@ module.exports = function(grunt) {
   });
 
   // Default task.
-  grunt.registerTask("build:coffee", "replace:coffee coffeelint coffee lint");
-  grunt.registerTask("build:js", "replace:js lint");
-  grunt.registerTask("diffjs", "replace:js replace:coffee coffee exec:diffjs");
+  grunt.registerTask("build", "coffeelint coffee replace:js replace:coffee");
   grunt.registerTask("gen_js_proj", "clean:js_proj generate_js_proj");
   grunt.registerTask("gen_cs_proj", "clean:cs_proj generate_cs_proj");
   grunt.registerTask("test_js_proj", "gen_js_proj exec:js_proj_jasmine");
   grunt.registerTask("test_cs_proj", "gen_cs_proj exec:cs_proj_jasmine");
 
-  grunt.registerTask("default", "clean:tmp replace:coffee replace:js coffeelint coffee lint replace:unreplace");
-
-
+  grunt.registerTask("default", "clean:tmp build");
 };

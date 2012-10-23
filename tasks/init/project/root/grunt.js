@@ -10,6 +10,7 @@ module.exports = function (grunt) {
         return "app/" + file;
       });
     } catch (e) {
+      console.log(e);
       return []
     }
   }
@@ -168,6 +169,8 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-coffeelint');
   grunt.loadNpmTasks('grunt-jasmine-runner');
   grunt.loadNpmTasks('grunt-jasmine-node');
+  grunt.renameTask('jasmine', 'jasmine-headless');
+  grunt.renameTask('jasmine-server', 'jasmine');
   grunt.registerTask('default', 'coffeelint coffee jst mincss tmplmin concat');
-  grunt.registerTask('test', 'default jasmine-server')
+  grunt.registerTask('test', 'default jasmine')
 }

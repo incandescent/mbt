@@ -1,38 +1,48 @@
-# {%= js_safe_name %} {%= name %} dependecies
-files = [
-  # vendor
-  "js/vendor/jquery.min"
-  "js/vendor/jquery.mobile.router.min"
-  "js/vendor/underscore-min"
-  "js/vendor/backbone"
-  "js/templates"
+{%=js_safe_name%} = @{%=js_safe_name%} = {} unless {%=js_safe_name%}?
 
-  # config
-  "js/config/config"
-  "js/config/envs/dev"
+getUrlParams = ->
+  vars = {}
+  window.location.href.replace /[?&]+([^=&]+)=([^&]*)/gi, (m,key,value) ->
+    vars[key] = (value.split("#")[0])
+  vars
 
-  # add your app dependecies here
+### {%=js_safe_name%} dependecies ###
+{%=js_safe_name%}.files = (env) ->
+  env = "dev" unless env?
 
-  # helpers
-  "js/helpers/render"
+  return "asset/app.js" if env == "prod"
+  return [
+    # vendor
+    "js/vendor/jquery.min.js",
+    "js/vendor/jquery.mobile.router.min.js",
+    "js/vendor/underscore-min.js",
+    "js/vendor/backbone.js",
+    "js/templates.js",
 
-  # models
+    # config
+    "js/config/config.js",
+    "js/config/envs/#{env}.js",
 
-  # collections
+    # add your app dependecies here
 
-  # views
+    # helpers
+    "js/helpers/render.js",
 
-  # app
-  "js/router"
-  "js/app"
-  "js/init"
+    # models
 
-  # load jquery mobile last
-  "js/vendor/jquery.mobile-1.1.0.min"
-]
+    # collections
 
-files = ("#{file}.js" for file in files)
+    # views
 
-# load all
-$script.order(files) if $script?
-module.exports = files if exports?
+    # app
+    "js/router.js",
+    "js/app.js",
+    "js/init.js",
+
+    # load jquery mobile last
+    "js/vendor/jquery.mobile-1.1.0.js"
+  ]
+
+### load all ###
+$script.order({%=js_safe_name%}.files(getUrlParams().env || "dev")) if $script?
+module.exports = {%=js_safe_name%}.files if exports?
