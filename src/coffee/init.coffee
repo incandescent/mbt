@@ -1,18 +1,11 @@
-jqmReady = $.Deferred()
-pgReady = $.Deferred()
+___mbt_app_name__ = @___mbt_app_name__ = {} unless ___mbt_app_name__?
 
-### JQM and PhoneGap are ready ###
-$.when(jqmReady, pgReady).then () ->
-  ### everything is ready here ###
+___mbt_app_name__.getUrlParams = ->
+  vars = {}
+  window.location.href.replace /[?&]+([^=&]+)=([^&]*)/gi, (m,key,value) ->
+    vars[key] = (value.split("#")[0])
+  vars
 
-### resolve phonegap ###
-if PhoneGap?
-  document.addEventListener("deviceready", pgReady.resolve, false)
-else
-  pgReady.resolve()
-
-### jqm ready ###
-$(document).on "mobileinit", () ->
-  ### init app after mobile is ready ###
-  ___mbt_app_name__.init()
-  jqmReady.resolve()
+if $script?
+  $script.order(___mbt_app_name__.files(getUrlParams().env), '___mbt_app_name__', ->
+    $(-> ___mbt_app_name__.init()))

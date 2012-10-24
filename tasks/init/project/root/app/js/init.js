@@ -1,36 +1,22 @@
-var jqmReady, pgReady;
+var {%=js_safe_name%};
 
-jqmReady = $.Deferred();
-
-pgReady = $.Deferred();
-
-/* JQM and PhoneGap are ready
-*/
-
-
-$.when(jqmReady, pgReady).then(function() {
-  /* everything is ready here
-  */
-
-});
-
-/* resolve phonegap
-*/
-
-
-if (typeof PhoneGap !== "undefined" && PhoneGap !== null) {
-  document.addEventListener("deviceready", pgReady.resolve, false);
-} else {
-  pgReady.resolve();
+if (typeof {%=js_safe_name%} === "undefined" || {%=js_safe_name%} === null) {
+  {%=js_safe_name%} = this.{%=js_safe_name%} = {};
 }
 
-/* jqm ready
-*/
+{%=js_safe_name%}.getUrlParams = function() {
+  var vars;
+  vars = {};
+  window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m, key, value) {
+    return vars[key] = (value.split("#")[0]);
+  });
+  return vars;
+};
 
-
-$(document).on("mobileinit", function() {
-  /* init app after mobile is ready
-  */
-  {%=js_safe_name%}.init();
-  return jqmReady.resolve();
-});
+if (typeof $script !== "undefined" && $script !== null) {
+  $script.order({%=js_safe_name%}.files(getUrlParams().env), '{%=js_safe_name%}', function() {
+    return $(function() {
+      return {%=js_safe_name%}.init();
+    });
+  });
+}

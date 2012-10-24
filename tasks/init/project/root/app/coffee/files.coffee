@@ -1,11 +1,5 @@
 {%=js_safe_name%} = @{%=js_safe_name%} = {} unless {%=js_safe_name%}?
 
-getUrlParams = ->
-  vars = {}
-  window.location.href.replace /[?&]+([^=&]+)=([^&]*)/gi, (m,key,value) ->
-    vars[key] = (value.split("#")[0])
-  vars
-
 ### {%=js_safe_name%} dependecies ###
 {%=js_safe_name%}.files = (env) ->
   env = "dev" unless env?
@@ -43,6 +37,4 @@ getUrlParams = ->
     "js/vendor/jquery.mobile-1.1.0.js"
   ]
 
-### load all ###
-$script.order({%=js_safe_name%}.files(getUrlParams().env || "dev")) if $script?
 module.exports = {%=js_safe_name%}.files if exports?

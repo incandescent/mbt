@@ -71,7 +71,14 @@ module.exports = function(grunt) {
       }
     },
     coffeelint: {
-      app: "<config:coffee.app.src>",
+      app: {
+        files: "<config:coffee.app.src>",
+        options: {
+          "max_line_length" : {
+            "level": "warn"
+          }
+        }
+      },
     },
     watch: {
       coffee: {

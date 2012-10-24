@@ -28,6 +28,8 @@ module.exports = function (grunt) {
 
   //jsFiles.unshift('phonegap/iphone/www/cordova-1.7.0.js');
 
+  console.log(jsFiles);
+
   var cfg = {
     js: {
       files: jsFiles

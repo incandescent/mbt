@@ -3,12 +3,10 @@ var fs = require('fs'),
     // configs specifying lang-specific paths
     LANGS = {
       coffee: {
-        include: "app/coffee/**"
+        include: [ "app/coffee/**", "app/js/**" ]
       },
       js: {
-        include: "app/js/**",
-        // the vendor dir is not "js-specific", so it shouldn't be excluded by other langs
-        except: "app/js/vendor/**"
+        include: [ "app/js/**" ]
       }
     },
     // static files we don't want to perform variable replacement on
@@ -27,30 +25,17 @@ var fs = require('fs'),
     ];
 
 // expand the files included for a specific language
-// by first including included files
-// and then excluding excluded files
 function expand_lang_specific_files(grunt, template_name, config) {
   var _ = grunt.utils._,
       pathPrefix = 'init/' + template_name + '/root/',
-      included = grunt.task.expandFiles({dot: true}, pathPrefix + '/' + config.include),
-      excepted = [],
-      rel_included = [],
-      rel_excepted = [];
+      included;
 
-  if (config.except) {
-    excepted = grunt.task.expandFiles({dot: true}, pathPrefix + '/' + config.except);
-  }
+  function prefix(obj) { return pathPrefix + '/' + obj }
+  function unprefix(obj) { return obj.rel.slice(pathPrefix.length); }
 
-  function strip(obj) { return obj.rel.slice(pathPrefix.length); }
+  included = grunt.task.expandFiles({dot: true}, _.map(config.include, prefix));
 
-  rel_included = _.map(included, strip);
-  rel_excepted = _.map(excepted, strip);
-
-  return _.reject(rel_included, function(path) {
-    return _.any(rel_excepted, function(except) {
-      return path.lastIndexOf(except, 0) === 0;
-    });
-  });
+  return _.map(included, unprefix);
 }
 
 // the MBT project template, supports invocation w/ various langs
@@ -70,6 +55,8 @@ module.exports = {
     // queues shared template task and this template task (again)
     // first the internal mbt-shared template is run, followed by the appropriate project template
     function init_project(err, props) {
+      var files;
+
       grunt.log.header(("Generating project " + props.name + " (" + props.js_safe_name + ")").green.bold);
 
       // if there is a dest param, hack the init destpath
@@ -79,10 +66,14 @@ module.exports = {
       }
 
       // fix up paths, exclude any other language-specific paths
+      files = expand_lang_specific_files(grunt, template_name, LANGS[lang]);
+      console.log(files);
       _.each(LANGS, function(lang_config, key) {
         if (key == lang) return;
         var paths = expand_lang_specific_files(grunt, template_name, lang_config);
-        _.each(paths, function(path) {
+        _.chain(paths).reject(function(path) {
+          return _(files).contains(path);
+        }).each(function(path) {
           // exclude this path by setting a null rename
           init.renames[path]  = null;
         });
