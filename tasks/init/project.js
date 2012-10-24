@@ -67,7 +67,6 @@ module.exports = {
 
       // fix up paths, exclude any other language-specific paths
       files = expand_lang_specific_files(grunt, template_name, LANGS[lang]);
-      console.log(files);
       _.each(LANGS, function(lang_config, key) {
         if (key == lang) return;
         var paths = expand_lang_specific_files(grunt, template_name, lang_config);
