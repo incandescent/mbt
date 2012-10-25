@@ -1,18 +1,11 @@
-jqmReady = $.Deferred()
-pgReady = $.Deferred()
+{%=js_safe_name%} = @{%=js_safe_name%} = {} unless {%=js_safe_name%}?
 
-# JQM and PhoneGap are ready
-$.when(jqmReady, pgReady).then () ->
-  # everything is ready here
+{%=js_safe_name%}.getUrlParams = ->
+  vars = {}
+  window.location.href.replace /[?&]+([^=&]+)=([^&]*)/gi, (m,key,value) ->
+    vars[key] = (value.split("#")[0])
+  vars
 
-# resolve phonegap
-if PhoneGap?
-  document.addEventListener("deviceready", pgReady.resolve, false)
-else
-  pgReady.resolve()
-
-# jqm ready
-$(document).on "mobileinit", () ->
-  # init app after mobile is ready
-  {%= js_safe_name %}.init()
-  jqmReady.resolve()
+if $script?
+  $script.order({%=js_safe_name%}.files(getUrlParams().env), '{%=js_safe_name%}', ->
+    $(-> {%=js_safe_name%}.init()))

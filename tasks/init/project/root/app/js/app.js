@@ -1,13 +1,8 @@
-(function ({%= js_safe_name %}) {
+/* initialize {%=js_safe_name%} app
+*/
 
-  "use strict";
-
-  // initialize {%= name %} app
-  {%= js_safe_name %}.init = function () {
-
-    // intialize router
-    this.initRouter();
-  };
-
-})({%= js_safe_name %});
-
+{%=js_safe_name%}.init = function() {
+  /* initialize router
+  */
+  return this.initRouter();
+};
