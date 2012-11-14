@@ -1,5 +1,5 @@
 ### setup router ###
-{%=js_safe_name%}.initRouter = () ->
+___mbt_app_name__.initRouter = () ->
 
   handlers = {
     # define your route handlers here

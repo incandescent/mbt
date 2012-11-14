@@ -1,7 +1,7 @@
-{%=js_safe_name%} = @{%=js_safe_name%} = {} unless {%=js_safe_name%}?
+___mbt_app_name__ = @___mbt_app_name__ = {} unless ___mbt_app_name__?
 
-### {%=js_safe_name%} dependecies ###
-{%=js_safe_name%}.files = (env) ->
+### ___mbt_app_name__ dependecies ###
+___mbt_app_name__.files = (env) ->
   env = "dev" unless env?
 
   return "asset/app.js" if env == "prod"
@@ -37,4 +37,4 @@
     "js/vendor/jquery.mobile-1.1.0.js"
   ]
 
-module.exports = {%=js_safe_name%}.files if exports?
+module.exports = ___mbt_app_name__.files if exports?

@@ -1,26 +1,22 @@
-(function () {
-  "use strict";
+var {%=js_safe_name%};
 
-  var jqmReady = $.Deferred(),
-      pgReady = $.Deferred();
+if (typeof {%=js_safe_name%} === "undefined" || {%=js_safe_name%} === null) {
+  {%=js_safe_name%} = this.{%=js_safe_name%} = {};
+}
 
-  // JQM and PhoneGap are ready
-  $.when(jqmReady, pgReady).then(function () {
-    // everything is ready here
+{%=js_safe_name%}.getUrlParams = function() {
+  var vars;
+  vars = {};
+  window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m, key, value) {
+    return vars[key] = (value.split("#")[0]);
   });
+  return vars;
+};
 
-  // resolve phonegap
-  if (typeof PhoneGap !== "undefined" && PhoneGap !== null) {
-    document.addEventListener("deviceready", pgReady.resolve, false);
-  } else {
-    pgReady.resolve();
-  }
-
-  //jqm ready
-  $(document).on("mobileinit", function () {
-    // init app after mobile is ready
-    {%= js_safe_name %}.init();
-    jqmReady.resolve();
+if (typeof $script !== "undefined" && $script !== null) {
+  $script.order({%=js_safe_name%}.files(getUrlParams().env), '{%=js_safe_name%}', function() {
+    return $(function() {
+      return {%=js_safe_name%}.init();
+    });
   });
-
-})();
+}
