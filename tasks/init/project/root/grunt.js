@@ -153,7 +153,7 @@ module.exports = function (grunt) {
   };
  
   // deep-merge user configs
-  if (path.existsSync(cfgPath)) {
+  if (fs.existsSync(cfgPath)) {
     grunt.utils._.each(fs.readdirSync(cfgPath), function(cfg_file) {
       if (cfg_file.match(/.*\.json$/)) {
         extend(true, cfg, JSON.parse(fs.readFileSync(cfgPath + '/' + cfg_file))); 
